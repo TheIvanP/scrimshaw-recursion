@@ -4,13 +4,13 @@ from sql_queries import create_table_queries, drop_table_queries
 
 def create_database():
     """
-    
+
     - Creates and connects to the sparkifydb
     - Returns the connection and cursor to sparkifydb
     """
     
     # connect to default database
-    conn = psycopg2.connect("host=127.0.0.1 dbname=template1 user=postgres password=postgres")
+    conn = psycopg2.connect("host=127.0.0.1 dbname=template1 user=student password=student")
     conn.set_session(autocommit=True)
     cur = conn.cursor()
     
@@ -23,7 +23,7 @@ def create_database():
     conn.close()    
     
     # connect to sparkify database
-    conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=postgres password=postgres")
+    conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
     
     return cur, conn
