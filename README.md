@@ -7,8 +7,6 @@ Database and ETL pipeline for optimizing queries around what songs have been pla
 ### Files:
 - etl.py
     - Main ETL proces to convert json files to table
- - eda.ipynb
-    - Exploratory data analysis on resulting table plotting top 10 users
 - etl.ipynb
     - Not used in etl pipeline or database; documentation of ETL development process
     
