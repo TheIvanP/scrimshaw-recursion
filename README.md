@@ -38,7 +38,17 @@ Database and ETL pipeline for optimizing queries around what songs have been pla
 7. The resulting data is saved in database in the following schema:
     
     - **Fact Table** 
-        - `songplays` 
+        - `songplays`
+            - `songplay_id`
+            - `start_time`
+            - `user_id`
+            - `level`
+            - `song_id`
+            - `artist_id`
+            - `session_id`
+            - `location` 
+            - `user_agent`
+            
             - records in log data associated with song plays i.e. records with page NextSong
             songplay_id, time_stamp, user_id, level, song_id, artist_id, session_id, location, user_agent
     
