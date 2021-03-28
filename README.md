@@ -29,10 +29,11 @@ Database and ETL pipeline for optimizing queries around what songs have been pla
 ---  
 
 ### How to run:
-1. Place all files in directory together with /data/ folder containing json files for songs and logs
-2. Have POSTGRES server running on localhost with enabled credentials for "host=127.0.0.1 user=student password=student"
-3. From a terminal, run <python3 create_tables.py> this will create relevant database tables and Sparkify database
-4. The application will create 'Sparkify' database
+1. Download/unzip
+2. With docker-desktop installed `$./postgres_db/docker-compose up` 
+3. `$python3 create_tables.py` 
+    - this will create relevant database tables and Sparkify database
+4. The application will create 'Sparkify' database on the postgres instance running
 5. Run <python3 etl.py>
 6. This will extract json files from data directory, transform and enrich the data with time information. Non existing data will be dropped.
 7. The resulting data is saved in database in the following schema:
@@ -48,7 +49,7 @@ Database and ETL pipeline for optimizing queries around what songs have been pla
             - `session_id`
             - `location` 
             - `user_agent`
-            
+
             - records in log data associated with song plays i.e. records with page NextSong
             songplay_id, time_stamp, user_id, level, song_id, artist_id, session_id, location, user_agent
     
