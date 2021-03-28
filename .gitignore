@@ -1,6 +1,9 @@
 # ignore environment
 env_*
 
+.DS_Store
+launch.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
