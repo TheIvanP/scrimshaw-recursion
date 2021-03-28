@@ -22,6 +22,10 @@ Database and ETL pipeline for optimizing queries around what songs have been pla
 - test.ipynb
     - test selecting data from tables
 
+- ./postgres_db
+    - docker image + compose file for running postgres database. 
+    - to run, have docker-desktop installed and run with docker-compose up from this folder
+
 ---  
 
 ### How to run:
