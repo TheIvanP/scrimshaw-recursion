@@ -10,54 +10,54 @@ artist_table_drop = "DROP TABLE IF EXISTS artists;"
 
 time_table_create = ("""
                         CREATE TABLE IF NOT EXISTS songtime (
-                        start_time      TIMESTAMP       PRIMARY KEY     NOT NULL, 
-                        hour            INT, 
-                        day             INT, 
-                        weekofyear      INT, 
-                        month           INT, 
-                        year            INT, 
-                        weekday         INT);
-                        """)
+                            start_time      TIMESTAMP       PRIMARY KEY     NOT NULL, 
+                            hour            INT, 
+                            day             INT, 
+                            weekofyear      INT, 
+                            month           INT, 
+                            year            INT, 
+                            weekday         INT);
+                            """)
 
 songplay_table_create = ("""
                         CREATE TABLE IF NOT EXISTS songplays (
-                        songplay_id     SERIAL          PRIMARY KEY, 
-                        start_time      TIMESTAMP       NOT NULL        REFERENCES      songtime(start_time), 
-                        user_id         INT             NOT NULL        REFERENCES      users, 
-                        level           VARCHAR,        
-                        song_id         VARCHAR         REFERENCES      songs, 
-                        artist_id       VARCHAR         REFERENCES      artists, 
-                        session_id      INT, 
-                        location        VARCHAR, 
-                        user_agent      VARCHAR);
-                        """)
+                            songplay_id     SERIAL          PRIMARY KEY, 
+                            start_time      TIMESTAMP       NOT NULL        REFERENCES      songtime(start_time), 
+                            user_id         INT             NOT NULL        REFERENCES      users, 
+                            level           VARCHAR,        
+                            song_id         VARCHAR         REFERENCES      songs, 
+                            artist_id       VARCHAR         REFERENCES      artists, 
+                            session_id      INT, 
+                            location        VARCHAR, 
+                            user_agent      VARCHAR);
+                            """)
 
 user_table_create = ("""
                         CREATE TABLE IF NOT EXISTS users (
-                        user_id         BIGINT          PRIMARY KEY, 
-                        first_name      VARCHAR         NOT NULL, 
-                        last_name       VARCHAR         NOT NULL, 
-                        gender          VARCHAR, 
-                        level           VARCHAR);
-                        """)
+                            user_id         BIGINT          PRIMARY KEY, 
+                            first_name      VARCHAR         NOT NULL, 
+                            last_name       VARCHAR         NOT NULL, 
+                            gender          VARCHAR, 
+                            level           VARCHAR);
+                            """)
 
 song_table_create = ("""
                         CREATE TABLE IF NOT EXISTS songs (
-                        song_id         VARCHAR         PRIMARY KEY     NOT NULL, 
-                        title           VARCHAR, 
-                        artist_id       VARCHAR, 
-                        year            NUMERIC, 
-                        duration        NUMERIC);
-                        """)
+                            song_id         VARCHAR         PRIMARY KEY     NOT NULL, 
+                            title           VARCHAR, 
+                            artist_id       VARCHAR, 
+                            year            NUMERIC, 
+                            duration        NUMERIC);
+                            """)
 
 artist_table_create = ("""  
                         CREATE TABLE IF NOT EXISTS artists (
-                        artist_id       VARCHAR         PRIMARY KEY     NOT NULL, 
-                        name            VARCHAR, 
-                        location        VARCHAR, 
-                        latitude        NUMERIC, 
-                        longitude       NUMERIC);
-                        """)
+                            artist_id       VARCHAR         PRIMARY KEY     NOT NULL, 
+                            name            VARCHAR, 
+                            location        VARCHAR, 
+                            latitude        NUMERIC, 
+                            longitude       NUMERIC);
+                            """)
 
 
 
@@ -65,60 +65,60 @@ artist_table_create = ("""
 
 songplay_table_insert = ("""
                         INSERT INTO songplays 
-                        (start_time,    user_id,        level, 
-                        song_id,        artist_id,      session_id, 
-                        location,       user_agent)
+                            (start_time,    user_id,        level, 
+                            song_id,        artist_id,      session_id, 
+                            location,       user_agent)
                         VALUES 
-                        (%s,            %s,             %s, 
-                        %s,             %s,             %s, 
-                        %s,             %s);
-                        """)
+                            (%s,            %s,             %s, 
+                            %s,             %s,             %s, 
+                            %s,             %s);
+                            """)
 
 user_table_insert = ("""
                         INSERT INTO users 
-                        (user_id,       first_name,     last_name, 
-                        gender,         level) 
+                            (user_id,       first_name,     last_name, 
+                            gender,         level) 
                         VALUES 
-                        (%s,            %s,             %s, 
-                        %s,             %s) 
+                            (%s,            %s,             %s, 
+                            %s,             %s) 
                         ON CONFLICT (user_id)
                         DO UPDATE SET level = EXCLUDED.level;
-                        """)
+                            """)
 
 song_table_insert = ("""
                         INSERT INTO songs 
-                        (song_id,   title,      artist_id, 
-                        year,       duration) 
+                            (song_id,   title,      artist_id, 
+                            year,       duration) 
                         VALUES 
-                        (%s,        %s,         %s, 
-                        %s,         %s) 
+                            (%s,        %s,         %s, 
+                            %s,         %s) 
                         ON CONFLICT 
                         DO NOTHING;
-                        """)
+                            """)
 
 artist_table_insert = ("""  
                         INSERT INTO artists 
-                        (artist_id,     name,   location, 
-                        latitude,       longitude) 
+                            (artist_id,     name,   location, 
+                            latitude,       longitude) 
                         VALUES 
-                        (%s,            %s,     %s, 
-                        %s,             %s) 
+                            (%s,            %s,     %s, 
+                            %s,             %s) 
                         ON CONFLICT 
                         DO NOTHING;
-                        """)
+                            """)
 
 time_table_insert = ("""
                         INSERT INTO songtime 
-                        (start_time,    hour,   day, 
-                        weekofyear,     month,  year, 
-                        weekday) 
+                            (start_time,    hour,   day, 
+                            weekofyear,     month,  year, 
+                            weekday) 
                         VALUES 
-                        (%s,            %s,     %s, 
-                        %s,             %s,     %s, 
-                        %s) 
+                            (%s,            %s,     %s, 
+                            %s,             %s,     %s, 
+                            %s) 
                         ON CONFLICT 
                         DO NOTHING;
-                        """)
+                            """)
 
 song_select = ("""
                         SELECT  
